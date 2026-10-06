@@ -20,10 +20,10 @@ export const Navbar = () => {
 
   return (
     <header className="border-b border-emerald-400/30 bg-emerald-950 text-white shadow-[0_4px_24px_rgba(16,185,129,0.18)]">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4">
+      <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <Link className="text-lg font-bold transition hover:text-lime-300" to="/home">Blog personal</Link>
-        <div className="flex items-center gap-3">
-          <Link className="rounded-lg px-3 py-2 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-300/10 hover:text-lime-200" to="/home">Inicio</Link>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link className="rounded-lg px-3 py-2 text-sm font-semibold text-lime-300 transition hover:bg-lime-300/10 hover:text-lime-200" to="/articles/new">Crear artículo</Link>
           <button className="rounded-lg border border-emerald-400/40 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:border-lime-300 hover:bg-lime-300 hover:text-emerald-950" type="button" onClick={handleLogout}>Cerrar sesión</button>
         </div>
       </nav>
