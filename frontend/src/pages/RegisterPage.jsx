@@ -52,23 +52,24 @@ export const RegisterPage = () => {
   ];
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-100 p-4">
-      <section className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-lg">
-        <h1 className="mb-6 text-2xl font-bold text-slate-900">Crear cuenta</h1>
+    <main className="flex min-h-screen items-center justify-center bg-slate-950 p-4 text-white">
+      <section className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-2xl shadow-black/30">
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">Blog personal</p>
+        <h1 className="mb-6 text-2xl font-bold text-white">Crear cuenta</h1>
         <form className="grid gap-4 sm:grid-cols-2" onSubmit={handleSubmit}>
           {fields.map(({ name, label, type }) => (
-            <label className={`grid gap-1 text-sm font-medium text-slate-700 ${name === "password" ? "sm:col-span-2" : ""}`} key={name}>
+            <label className={`grid gap-1 text-sm font-medium text-slate-200 ${name === "password" ? "sm:col-span-2" : ""}`} key={name}>
               {label}
-              <input className="rounded-lg border border-slate-300 px-3 py-2" type={type} name={name} value={formState[name]} onChange={handleInputChange} required />
+              <input className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-white outline-none transition placeholder:text-slate-500 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20" type={type} name={name} value={formState[name]} onChange={handleInputChange} required />
             </label>
           ))}
-          {errors.length > 0 && <ul role="alert" className="grid gap-1 text-sm text-red-700 sm:col-span-2">{errors.map((error, index) => <li key={`${error}-${index}`}>{error}</li>)}</ul>}
-          {message && <p role="status" className="text-sm text-green-700 sm:col-span-2">{message}</p>}
-          <button className="rounded-lg bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 disabled:opacity-60 sm:col-span-2" type="submit" disabled={isLoading}>
+          {errors.length > 0 && <ul role="alert" className="grid gap-1 rounded-lg border border-rose-900 bg-rose-950/60 p-3 text-sm text-rose-300 sm:col-span-2">{errors.map((error, index) => <li key={`${error}-${index}`}>{error}</li>)}</ul>}
+          {message && <p role="status" className="rounded-lg border border-emerald-800 bg-emerald-950/60 p-3 text-sm text-emerald-300 sm:col-span-2">{message}</p>}
+          <button className="rounded-lg bg-emerald-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-60 sm:col-span-2" type="submit" disabled={isLoading}>
             {isLoading ? "Creando cuenta..." : "Registrarme"}
           </button>
         </form>
-        <p className="mt-5 text-sm text-slate-600">¿Ya tenés cuenta? <Link className="font-semibold text-blue-700 hover:underline" to="/login">Iniciá sesión</Link></p>
+        <p className="mt-5 text-sm text-slate-400">¿Ya tenés cuenta? <Link className="font-semibold text-sky-400 hover:text-sky-300 hover:underline" to="/login">Iniciá sesión</Link></p>
       </section>
     </main>
   );

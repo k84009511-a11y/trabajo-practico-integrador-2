@@ -19,10 +19,10 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="bg-slate-900 text-white">
+    <header className="border-b border-slate-800 bg-slate-950 text-white">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-        <Link className="text-lg font-bold hover:text-blue-300" to="/home">Blog personal</Link>
-        <button className="rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold hover:bg-white/20" type="button" onClick={handleLogout}>Cerrar sesión</button>
+        <Link className="text-lg font-bold transition hover:text-emerald-300" to="/home">Blog personal</Link>
+        <button className="rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-500 hover:bg-emerald-400 hover:text-slate-950" type="button" onClick={handleLogout}>Cerrar sesión</button>
       </nav>
     </header>
   );
