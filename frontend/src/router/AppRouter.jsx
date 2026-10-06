@@ -1,17 +1,30 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { HomePage } from "../pages/HomePage";
-import { LoginPage } from "../pages/LoginPage";
-import { RegisterPage } from "../pages/RegisterPage";
+import { Navbar } from "../components/Navbar.jsx";
+import { HomePage } from "../pages/HomePage.jsx";
+import { LoginPage } from "../pages/LoginPage.jsx";
+import { RegisterPage } from "../pages/RegisterPage.jsx";
+import { PrivateRoutes } from "./PrivateRoutes.jsx";
+import { PublicRoutes } from "./PublicRoutes.jsx";
 
-export const AppRouter = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/home" element={<HomePage />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const PrivateLayout = () => (
+  <PrivateRoutes>
+    <Navbar />
+    <HomePage />
+  </PrivateRoutes>
+);
+
+const UnknownRoute = () => (
+  <Navigate to={localStorage.getItem("isLogged") === "true" ? "/home" : "/login"} replace />
+);
+
+export const AppRouter = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<UnknownRoute />} />
+      <Route path="/login" element={<PublicRoutes><LoginPage /></PublicRoutes>} />
+      <Route path="/register" element={<PublicRoutes><RegisterPage /></PublicRoutes>} />
+      <Route path="/home" element={<PrivateLayout />} />
+      <Route path="*" element={<UnknownRoute />} />
+    </Routes>
+  </BrowserRouter>
+);
