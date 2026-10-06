@@ -41,10 +41,10 @@ export const LoginPage = () => {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950 p-4 text-white">
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 p-4 text-white">
       <section className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-2xl shadow-black/30">
         <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">Blog personal</p>
-        <h1 className="mb-6 text-2xl font-bold text-white">Iniciar sesión</h1>
+        <h1 className="mb-6 text-2xl font-bold text-white drop-shadow-[0_2px_12px_rgba(52,211,153,0.35)]">Iniciar sesión</h1>
         {location.state?.message && <p role="status" className="mb-4 rounded-lg border border-emerald-800 bg-emerald-950/60 p-3 text-sm text-emerald-300">{location.state.message}</p>}
         <form className="grid gap-4" onSubmit={handleSubmit}>
           <label className="grid gap-1 text-sm font-medium text-slate-200">

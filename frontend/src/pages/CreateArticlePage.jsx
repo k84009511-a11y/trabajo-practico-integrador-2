@@ -46,10 +46,10 @@ export const CreateArticlePage = () => {
   };
 
   return (
-    <main className="min-h-screen bg-slate-950 px-6 py-10 text-white">
-      <section className="mx-auto max-w-3xl rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-2xl shadow-black/30 sm:p-8">
+    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 px-6 py-10 text-white">
+      <section className="mx-auto max-w-3xl rounded-2xl border border-slate-800 bg-slate-900/90 p-6 shadow-2xl shadow-black/30 sm:p-8">
         <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">Compartí tus ideas</p>
-        <h1 className="mb-6 text-3xl font-bold">Crear artículo</h1>
+        <h1 className="mb-6 text-3xl font-bold drop-shadow-[0_2px_14px_rgba(52,211,153,0.4)]">Crear artículo</h1>
         <form className="grid gap-5" onSubmit={handleSubmit}>
           <label className="grid gap-2 text-sm font-medium text-slate-200">
             Título

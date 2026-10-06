@@ -9,14 +9,12 @@ export const RegisterPage = () => {
   const { formState, handleInputChange, handleReset } = useForm(initialValues);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setErrors([]);
-    setMessage("");
 
     try {
       const response = await fetch(`${API_URL}/auth/register`, {
@@ -34,8 +32,7 @@ export const RegisterPage = () => {
       if (!response.ok) throw new Error(result.message || "No se pudo completar el registro. Intentá más tarde.");
 
       handleReset();
-      setMessage("Registro exitoso. Redirigiendo al inicio de sesión...");
-      navigate("/login", { replace: true, state: { message: "Tu cuenta se creó correctamente. Iniciá sesión." } });
+      navigate("/login", { replace: true });
     } catch (requestError) {
       setErrors([requestError.message || "No se pudo conectar con el servidor."]);
     } finally {
@@ -52,10 +49,10 @@ export const RegisterPage = () => {
   ];
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-950 p-4 text-white">
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 p-4 text-white">
       <section className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-2xl shadow-black/30">
         <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">Blog personal</p>
-        <h1 className="mb-6 text-2xl font-bold text-white">Crear cuenta</h1>
+        <h1 className="mb-6 text-2xl font-bold text-white drop-shadow-[0_2px_12px_rgba(52,211,153,0.35)]">Crear cuenta</h1>
         <form className="grid gap-4 sm:grid-cols-2" onSubmit={handleSubmit}>
           {fields.map(({ name, label, type }) => (
             <label className={`grid gap-1 text-sm font-medium text-slate-200 ${name === "password" ? "sm:col-span-2" : ""}`} key={name}>
@@ -64,7 +61,6 @@ export const RegisterPage = () => {
             </label>
           ))}
           {errors.length > 0 && <ul role="alert" className="grid gap-1 rounded-lg border border-rose-900 bg-rose-950/60 p-3 text-sm text-rose-300 sm:col-span-2">{errors.map((error, index) => <li key={`${error}-${index}`}>{error}</li>)}</ul>}
-          {message && <p role="status" className="rounded-lg border border-emerald-800 bg-emerald-950/60 p-3 text-sm text-emerald-300 sm:col-span-2">{message}</p>}
           <button className="rounded-lg bg-emerald-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-emerald-300 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-60 sm:col-span-2" type="submit" disabled={isLoading}>
             {isLoading ? "Creando cuenta..." : "Registrarme"}
           </button>
