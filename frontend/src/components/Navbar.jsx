@@ -20,9 +20,12 @@ export const Navbar = () => {
 
   return (
     <header className="border-b border-slate-800 bg-slate-950 text-white">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <Link className="text-lg font-bold transition hover:text-emerald-300" to="/home">Blog personal</Link>
-        <button className="rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-500 hover:bg-emerald-400 hover:text-slate-950" type="button" onClick={handleLogout}>Cerrar sesión</button>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link className="rounded-lg px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-sky-400/10 hover:text-sky-200" to="/articles/new">Crear artículo</Link>
+          <button className="rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-emerald-500 hover:bg-emerald-400 hover:text-slate-950" type="button" onClick={handleLogout}>Cerrar sesión</button>
+        </div>
       </nav>
     </header>
   );
