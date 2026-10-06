@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -9,23 +9,17 @@ export const useFetch = (url) => {
     try {
       setIsLoading(true);
       setError(null);
+      const response = await fetch(url, { credentials: "include" });
 
-      const res = await fetch(url, { credentials: "include" });
-
-      if (res.status === 401) {
-        throw new Error("Sesión inexistente o expirada");
-      }
-      if (res.status === 403) {
-        throw new Error("No tenés permisos para ver este contenido");
-      }
-      if (!res.ok) {
-        throw new Error("Ocurrió un error en el servidor. Intentá más tarde");
+      if (!response.ok) {
+        if (response.status === 401) throw new Error("Tu sesión no existe o expiró.");
+        if (response.status === 403) throw new Error("No tenés permisos para ver este contenido.");
+        throw new Error("No se pudieron cargar los artículos. Intentá más tarde.");
       }
 
-      const result = await res.json();
-      setData(result);
-    } catch (err) {
-      setError(err.message);
+      setData(await response.json());
+    } catch (requestError) {
+      setError(requestError.message || "No se pudo conectar con el servidor.");
     } finally {
       setIsLoading(false);
     }
