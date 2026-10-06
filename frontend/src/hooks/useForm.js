@@ -3,9 +3,9 @@ import { useState } from "react";
 export const useForm = (initialValues) => {
   const [formState, setFormState] = useState(initialValues);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormState((prev) => ({ ...prev, [name]: value }));
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormState((previousValues) => ({ ...previousValues, [name]: value }));
   };
 
   const handleReset = () => setFormState(initialValues);
