@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/Navbar.jsx";
 import { HomePage } from "../pages/HomePage.jsx";
 import { CreateArticlePage } from "../pages/CreateArticlePage.jsx";
+import { ArchivedArticlesPage } from "../pages/ArchivedArticlesPage.jsx";
 import { LoginPage } from "../pages/LoginPage.jsx";
 import { RegisterPage } from "../pages/RegisterPage.jsx";
 import { PrivateRoutes } from "./PrivateRoutes.jsx";
@@ -21,6 +22,13 @@ const PrivateArticleLayout = () => (
   </PrivateRoutes>
 );
 
+const PrivateArchivedArticlesLayout = () => (
+  <PrivateRoutes>
+    <Navbar />
+    <ArchivedArticlesPage />
+  </PrivateRoutes>
+);
+
 const UnknownRoute = () => (
   <Navigate to={localStorage.getItem("isLogged") === "true" ? "/home" : "/login"} replace />
 );
@@ -33,6 +41,7 @@ export const AppRouter = () => (
       <Route path="/register" element={<PublicRoutes><RegisterPage /></PublicRoutes>} />
       <Route path="/home" element={<PrivateLayout />} />
       <Route path="/articles/new" element={<PrivateArticleLayout />} />
+      <Route path="/articles/archived" element={<PrivateArchivedArticlesLayout />} />
       <Route path="*" element={<UnknownRoute />} />
     </Routes>
   </BrowserRouter>

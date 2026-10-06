@@ -52,7 +52,7 @@ export const RegisterPage = () => {
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 p-4 text-white">
       <section className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-2xl shadow-black/30">
         <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-emerald-400">Blog personal</p>
-        <h1 className="mb-6 text-2xl font-bold text-white drop-shadow-[0_2px_12px_rgba(52,211,153,0.35)]">Crear cuenta</h1>
+        <h1 className="mb-6 text-2xl font-bold text-white drop-shadow-[0_1px_4px_rgba(52,211,153,0.18)]">Crear cuenta</h1>
         <form className="grid gap-4 sm:grid-cols-2" onSubmit={handleSubmit}>
           {fields.map(({ name, label, type }) => (
             <label className={`grid gap-1 text-sm font-medium text-slate-200 ${name === "password" ? "sm:col-span-2" : ""}`} key={name}>
