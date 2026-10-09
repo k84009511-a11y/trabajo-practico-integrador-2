@@ -1,7 +1,5 @@
 # Trabajo Práctico Integrador II
 
-Frontend de gestión de blog personal con React, Vite, Tailwind CSS y React Router. El backend utilizado es [Trabajo Práctico Integrador I](https://github.com/k84009511-a11y/trabajo-practico-integrador-1).
-
 ## Requisitos
 
 - Node.js y npm.
@@ -14,5 +12,3 @@ Desde `backend/`, instalar dependencias con `npm install`, configurar `DB_HOST`,
 ## Iniciar el frontend
 
 Desde `frontend/`, ejecutar `npm install` y luego `npm run dev`. El frontend usa por defecto `http://localhost:3000/api`; para cambiarlo, definir `VITE_API_URL` en `frontend/.env` (por ejemplo `VITE_API_URL=http://localhost:3000/api`).
-
-También están disponibles `npm run build` para generar la versión de producción y `npm run lint` para revisar el código.
